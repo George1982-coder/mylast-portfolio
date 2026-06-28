@@ -1,8 +1,22 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+  background: linear-gradient(
+    180deg,
+    #1e293b 0%,
+    #111827 45%,
+    #0f172a 100%
+  );
+  background-attachment: fixed;
+  background-color: #0f172a;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0f172a;
+  --background-mid: #111827;
+  --background-top: #1e293b;
+  --foreground: #ffffff;
 }
 
 @theme inline {
@@ -14,13 +28,69 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a;
+    --background-mid: #111827;
+    --background-top: #1e293b;
+    --foreground: #ffffff;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: transparent !important;
+  color: #ffffff !important;
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100%;
+}
+
+main {
+  background: transparent !important;
+  color: inherit;
+}
+
+.profilefoto {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 1.5rem auto 0;
+}
+
+.myfoto {
+  width: 350px;
+  height: auto;
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes gradient-rotate {
+  from {
+    --gradient-angle: 0deg;
+  }
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+.gradient-border-auto {
+  animation: gradient-rotate var(--animation-duration, 5s) linear infinite;
+}
+
+.gradient-border-hover {
+  animation: gradient-rotate var(--animation-duration, 5s) linear infinite;
+  animation-play-state: paused;
+}
+
+.gradient-border-hover:hover {
+  animation-play-state: running;
+}
+
+.gradient-border-stop-hover {
+  animation: gradient-rotate var(--animation-duration, 5s) linear infinite;
+}
+
+.gradient-border-stop-hover:hover {
+  animation-play-state: paused;
 }
