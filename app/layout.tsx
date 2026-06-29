@@ -30,7 +30,9 @@ export default function RootLayout({
     >
       <body className="relative min-h-full flex flex-col">
         <Starfield />
-        <div className="relative z-0 flex min-h-full flex-1 flex-col">{children}</div>
+        <div className="relative z-0 flex min-h-full flex-1 flex-col">
+          {children}
+        </div>
       </body>
     </html>
   );
